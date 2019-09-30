@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <title>RADAR CHART</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="actual">Inicio</a> <a href="chartjs-line.html">Femicidios últimos 10 años</a> <a href="chartjs-bar.html">Edades</a> <a href="chartjs-radar.html">Edades/regiones</a> <a href="c3js-line.html">Denuncias Violencia Intrafamiliar</a> <a href="d3plus-treemap.html">Femicidios por regiones</a>
+    </nav>
+
+    <canvas id="chart"></canvas>
+
+    <script>
+        var w = document.body.offsetWidth;
+
+        var sel;
+
+        function setup() {
+            noCanvas();
+            sel = createSelect();
+            sel.position(w - 180, 18);
+            sel.option('Edades', 0);
+            sel.option('Regiones', 1);
+            sel.changed(opciones);
+            edades();
+        }
+
+        function opciones() {
+            clear();
+            if (sel.value() == 0) {
+                edades();
+            } else {
+                regiones();
+            }
+        }
+
+        function edades() {
+            new Chart(document.getElementById('chart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ["10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90","NI"],
+                    datasets: [{
+                    backgroundColor: ['rgb(74, 35, 90)','rgb(108, 52, 131)','rgb(142, 68, 173)','rgb(165, 105, 189)','rgb(187, 143, 206)','rgb(210, 180, 222 )','rgb(215, 189, 226 )', 'rgb(232, 218, 239 )','rgb(244, 236, 247)'],
+                        data: [2,5,8,5,7,4,2,1,4],
+                    } ]
+                }
+            });
+        }
+
+        function regiones() {
+            new Chart(document.getElementById('chart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ["XV", "I", "II", "III", "IV", "V", "RM", "VI", "VII", "XVI", "VIII", "IX", "XIV", "X", "XI", "XII"],
+                    datasets: [{
+                        backgroundColor:['rgb(88, 214, 141)', 'rgb(241, 148, 138)','rgb(162, 217, 206)','rgb(142, 68, 173)','rgb(241, 196, 15)','rgb(176, 58, 46)','rgb(20, 143, 119)','rgb(31, 97, 141)','rgb(162, 217, 206)',
+                          'rgb(245, 203, 167)', 'rgb(133, 146, 158)','rgb(232, 218, 239)','rgb(100, 30, 22)','rgb(40, 180, 99)','rgb(203, 67, 53)','rgb(249, 231, 159)','rgb(133, 193, 233)'],
+                        data: [0,1,0,1,1,4,14,2,4,0,4,6,4,1,0,0],
+               }]
+                },
+                    }
+                )
+            }
+    </script>
+
+</body>
+
+</html>

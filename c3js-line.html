@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <title>LINE CHART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.1/c3.min.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.1/c3.min.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="actual">Inicio</a> <a href="chartjs-line.html">Femicidios últimos 10 años</a> <a href="chartjs-bar.html">Edades</a> <a href="chartjs-radar.html">Edades/regiones</a> <a href="c3js-line.html">Denuncias Violencia Intrafamiliar</a> <a href="d3plus-treemap.html">Femicidios por regiones</a>
+    </nav>
+    
+   
+
+    <div id="chart"></div>
+
+    <script>
+        
+       var chart = c3.generate({
+    data: {
+        x: 'x',
+//        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+        columns: [
+            ['x', '01', '02', '03', '04', '05', '06','07','08','09',"10",'11','12','13','14','15','16'],
+//            ['x', '1', '2', '20130103', '20130104', '20130105', '20130106'],
+            ['2018', 1296, 2298, 2624, 1479, 3563,8569,34406,4722,5293,2566,7027,5907,2276,5169,601,654],
+            ['2019', 689, 1182, 1390,784, 2003,4545,18877,2559,2995,1396,3997,3089,1232,3010,275,339]
+        ]
+    },
+
+});
+
+
+    </script>
+
+</body>
+
+</html>
